@@ -1,14 +1,16 @@
 ENGINEER_CODE = "eng123"
 
 
-def ask_name():  # takes the name of the user
+# takes the name of the user
+def ask_name():
     name = str(input("Please enter your first name: "))
     name = name.capitalize()
 
     return name
 
 
-def take_info(name):  # takes the registration number and duration of stay of the user
+# takes the registration number and duration of stay of the user
+def take_info(name):
     regNum = str(input("Please enter your registration number: "))
     regNum = regNum.upper()
     duration = int(
@@ -17,7 +19,8 @@ def take_info(name):  # takes the registration number and duration of stay of th
     return regNum, duration
 
 
-def calculate_fee(name, regNum, duration):  # calculates the user's parking fee
+# calculates the user's parking fee
+def calculate_fee(name, regNum, duration):
     fee = 2.50
     extraTime = duration - 60
     while extraTime > 0:
@@ -40,7 +43,8 @@ def print_ticket(name, regNum, duration, fee):
     print("\n")
 
 
-def save_data(regNum, fee):  # tells the user their data is being saved and saves reg number and fee to external text file
+# tells the user their data is being saved and saves reg number and fee to external text file
+def save_data(regNum, fee):
     print("Saving data...")
     file = open("park_details.txt", "a")
     output_data = regNum + "," + fee + "\n"
@@ -48,7 +52,8 @@ def save_data(regNum, fee):  # tells the user their data is being saved and save
     file.close()
 
 
-def engineer_mode():  # welcomes engineer to Engineer Mode and asks user to choose summary or registration report
+# welcomes engineer to Engineer Mode and asks user to choose summary or registration report
+def engineer_mode():
     print("Welcome to Engineer Mode.")
     dataBase = load_data()
     mode = input(
@@ -63,7 +68,8 @@ def engineer_mode():  # welcomes engineer to Engineer Mode and asks user to choo
         exit()
 
 
-def load_data():  # loads the data from the text file and stores it in a database for the information to be extracted later
+# loads the data from the text file and stores it in a database for the information to be extracted later
+def load_data():
     print("\n")
     print("Loading data...")
     dataBase = []
@@ -95,7 +101,8 @@ def summary_report(dataBase):
     print("\n")
 
 
-def reg_report(dataBase):  # produces a report of reg numbers and their fees matching the search term
+# produces a report of reg numbers and their fees matching the search term
+def reg_report(dataBase):
     search_term = input("What is the reg number of the car: ")
     search_term = search_term.upper()
     for record in dataBase:
